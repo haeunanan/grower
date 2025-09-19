@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+.login-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 320px;
+}
+.login-form h1 {
+    color: #4CAF50;
+    font-size: 48px;
+    margin: 0;
+}
+/* 이 부분을 수정합니다 */
+.login-form .subtitle {
+    color: #888;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out;
+}
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.login-form a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+.login-form .signup-link {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* 이 부분을 맨 아래에 추가합니다 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* 홈 화면 스타일 추가 */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.main-nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.main-nav a:hover {
+    color: #4CAF50;
+}
+
+.content {
+    margin-top: 100px; /* 헤더 높이만큼 여백 */
+    padding: 20px;
+    text-align: center;
+}
+/* 퀴즈 페이지 스타일 추가 */
+.main-nav a.active {
+    color: #4CAF50;
+    border-bottom: 2px solid #4CAF50;
+}
+/* 이 부분을 추가해주세요! */
+.difficulty-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.difficulty-btn {
+    width: 300px;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 30px; /* 둥근 모서리 */
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.difficulty-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #aaa;
+    transform: translateY(-2px); /* 살짝 위로 이동 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hidden { display: none; }
+
+.quiz-word { font-size: 36px; margin-bottom: 30px; }
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 선택지 버튼 사이 간격 */
+    width: 100%;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+}
+
+.option-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #aaa;
+}
+
+/* 퀴즈 진행 및 결과 화면 스타일 */
+.quiz-progress { font-size: 14px; color: #888; margin-bottom: 10px; }
+.option-btn.selected { background-color: #dceddc; border-color: #4CAF50; }
+#submit-btn { width: 300px; padding: 15px; background-color: #4CAF50; color: white; border: none; border-radius: 30px; cursor: pointer; margin-top: 20px; font-size: 18px; }
+.feedback { margin-top: 15px; font-weight: bold; font-size: 18px; }
+.feedback.correct { color: green; }
+.feedback.incorrect { color: red; }
+
+.completion-container { text-align: center; }
+.completion-container h2 { font-size: 32px; }
+.final-score { font-size: 48px; font-weight: bold; color: #4CAF50; margin: 20px 0; }
+.completion-buttons { display: flex; gap: 15px; justify-content: center; }
+.completion-btn { display: inline-block; width: 150px; padding: 15px; background-color: #f0f0f0; color: #333; text-decoration: none; border: 1px solid #ddd; border-radius: 30px; cursor: pointer; font-size: 16px; }
+#retry-btn { font-family: Arial, sans-serif; }
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+.quiz-difficulty {
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+}

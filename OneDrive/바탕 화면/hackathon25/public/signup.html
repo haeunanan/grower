@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grower - 회원가입</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-form">
+        <a href="/" style="text-decoration: none; color: black; position: absolute; top: 20px; left: 20px; font-size: 24px;">&lt;</a>
+        <h2>회원가입</h2>
+        <form action="/signup" method="POST">
+            <input type="text" name="userid" placeholder="아이디 입력 (6~20자)" required>
+            <input type="password" name="password" placeholder="비밀번호 입력 (문자, 숫자 포함 8~20자)" required>
+            <input type="password" name="password_confirm" placeholder="비밀번호 재입력" required>
+            <input type="text" name="username" placeholder="이름을 입력해주세요" required>
+            <button type="submit">가입하기</button>
+        </form>
+    </div>
+</body>
+</html>
