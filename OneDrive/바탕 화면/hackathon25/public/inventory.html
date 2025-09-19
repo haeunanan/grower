@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grower - 홈</title>
+    <title>Grower - 보관함</title>
     <link rel="stylesheet" href="style.css">
+    <script src="inventory.js" defer></script>
 </head>
 <body>
     <header class="main-header">
@@ -13,15 +14,19 @@
             <a href="/home.html">홈</a>
             <a href="/quiz.html">퀴즈</a>
             <a href="/shop.html">상점</a>
-            <a href="/cultivation.html">재배</a>
+            <a href="/cultivation.html" class="active">재배</a>
             <a href="#">점수</a>
         </nav>
         <div class="menu-dots">...</div>
     </header>
 
     <main class="content">
-        <h1>환영합니다!</h1>
-        <p>이곳은 로그인한 사용자만 볼 수 있는 홈 화면입니다.</p>
+        <div class="page-header">
+            <a href="/cultivation.html" class="back-button">&lt;</a>
+            <h2>보관함</h2>
+        </div>
+        <div id="inventory-grid" class="inventory-grid">
+            </div>
     </main>
 </body>
 </html>

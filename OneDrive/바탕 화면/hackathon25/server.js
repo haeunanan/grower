@@ -103,10 +103,11 @@ app.post('/check-answer', (req, res) => {
         if (questionWord.meaning === userAnswer) {
             const loggedInUser = 'testuser'; // 현재 사용자를 'testuser'로 가정
             users[loggedInUser].coins += 1; // 코인 1 증가
+            users[loggedInUser].score += 100;
             try { // 변경된 코인 정보를 파일에 저장
                 fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
             } catch (err) {
-                console.error('코인 정보 저장 오류:', err);
+                console.error('코인/점수 정보 저장 오류:', err);
             }
             res.json({ correct: true });
         } else {

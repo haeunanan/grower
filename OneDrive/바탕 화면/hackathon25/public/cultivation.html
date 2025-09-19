@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grower - 재배</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="cultivation.js" defer></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">grower</div>
+        <nav class="main-nav">
+            <a href="/home.html">홈</a>
+            <a href="/quiz.html">퀴즈</a>
+            <a href="/shop.html">상점</a>
+            <a href="/cultivation.html" class="active">재배</a>
+            <a href="#">점수</a>
+        </nav>
+        <div class="menu-dots">...</div>
+    </header>
+
+    <main class="content cultivation-page">
+        <div class="top-section">
+            <div class="score-display">누적점수: <span id="user-score">0</span>점</div>
+            <a href="/inventory.html" class="storage-box-container">
+                <img src="/images/storage.png" alt="보관함">
+            </a>
+        </div>
+
+        <div class="bottom-section">
+            <div id="plant-slots" class="plant-slots">
+                </div>
+        </div>
+    </main>
+</body>
+</html>
