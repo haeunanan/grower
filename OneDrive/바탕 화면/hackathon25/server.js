@@ -33,9 +33,19 @@ const loadWords = (filePath) => {
 };
 
 // 3. (임시) 사용자 데이터베이스
-const users = {
-    'testuser': { password: 'password123', name: '테스트유저' },
-};
+const usersFilePath = './users.json';
+let users = {}; // 서버 시작 시 파일에서 데이터를 읽어와 채울 빈 객체
+
+// 서버 시작 전에 동기적으로 사용자 파일을 먼저 읽어옵니다.
+try {
+    const data = fs.readFileSync(usersFilePath, 'utf8');
+    users = JSON.parse(data);
+    console.log('사용자 데이터 로딩 완료.');
+} catch (err) {
+    console.error('사용자 데이터 로딩 오류:', err);
+    // 파일이 없거나 오류가 있으면 빈 객체로 시작
+    users = {};
+}
 
 // 4. 라우팅(Routing) - 기능별 주소 처리
 // (이전과 동일한 로그인, 회원가입, 퀴즈, 정답 확인 코드가 여기에 위치합니다)
@@ -50,7 +60,13 @@ app.post('/signup', (req, res) => {
         return res.send('<h1>회원가입 실패</h1><p>이미 존재하는 아이디입니다.</p><a href="/signup.html">다시 시도</a>');
     }
     users[userid] = { password: password, name: username };
-    console.log('새로운 사용자 등록 완료!', users);
+    try {
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+        console.log('새로운 사용자 등록 후 파일에 저장 완료!', users);
+    } catch (err) {
+        console.error('사용자 파일 저장 오류:', err);
+        return res.status(500).send('서버 오류: 사용자 정보를 저장하지 못했습니다.');
+    }
     res.redirect('/');
 });
 
