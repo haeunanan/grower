@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grower - 상점</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="shop.js" defer></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">grower</div>
+        <nav class="main-nav">
+            <a href="/home.html">홈</a>
+            <a href="/quiz.html">퀴즈</a>
+            <a href="/shop.html" class="active">상점</a>
+            <a href="/cultivation.html">재배</a>
+            <a href="#">점수</a>
+        </nav>
+        <div class="menu-dots">...</div>
+    </header>
+
+    <main class="content">
+        <div class="coin-display">내 코인: <span id="my-coins">?</span>개</div>
+        
+        <section id="item-grid" class="shop-grid">
+            </section>
+        
+        <section class="purchase-summary">
+            <h2>구매 요약</h2>
+            <div id="summary-list">
+                <p>구매할 아이템이 없습니다.</p>
+            </div>
+            <button id="purchase-btn" disabled>총 0개 구매하기 (0 코인)</button>
+        </section>
+    </main>
+</body>
+</html>

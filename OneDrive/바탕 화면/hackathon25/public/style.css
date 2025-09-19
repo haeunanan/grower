@@ -196,3 +196,22 @@ body {
     color: #555;
     font-weight: bold;
 }
+
+/* 상점 페이지 스타일 */
+.coin-display { font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 30px; }
+.shop-grid {
+    display: flex;
+    overflow-x: auto; /* 내용이 넘칠 경우 가로 스크롤 생성 */
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 10px; /* 스크롤바와 아이템 사이 여백 */
+}
+.shop-card { background: #fff; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 15px; text-align: center; }
+.shop-img { width: 100px; height: 100px; object-fit: contain; }
+.shop-item-name { margin: 10px 0; font-size: 16px; }
+.item-controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.quantity-btn { padding: 5px 10px; font-size: 18px; cursor: pointer; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; }
+.quantity { font-size: 18px; font-weight: bold; min-width: 20px; }
+.purchase-summary { text-align: center; }
+#purchase-btn { padding: 15px 30px; font-size: 18px; background-color: #4CAF50; color: white; border: none; border-radius: 30px; cursor: pointer; }
+#purchase-btn:disabled { background-color: #ccc; cursor: not-allowed; }

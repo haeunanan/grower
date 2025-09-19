@@ -101,6 +101,13 @@ app.post('/check-answer', (req, res) => {
     const questionWord = allWords.find(w => w.word === word);
     if (questionWord) {
         if (questionWord.meaning === userAnswer) {
+            const loggedInUser = 'testuser'; // 현재 사용자를 'testuser'로 가정
+            users[loggedInUser].coins += 1; // 코인 1 증가
+            try { // 변경된 코인 정보를 파일에 저장
+                fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+            } catch (err) {
+                console.error('코인 정보 저장 오류:', err);
+            }
             res.json({ correct: true });
         } else {
             res.json({ correct: false, correctAnswer: questionWord.meaning });
@@ -121,6 +128,58 @@ Promise.all([
     easyWords.push(...easy);
     mediumWords.push(...medium);
     hardWords.push(...hard);
+
+// server.js에 아래 두 API 추가
+
+// API 1: 현재 사용자 정보(코인, 인벤토리)를 보내주는 기능
+app.get('/api/user-data', (req, res) => {
+    const loggedInUser = 'testuser'; // 'testuser'로 가정
+    if (users[loggedInUser]) {
+        res.json({
+            coins: users[loggedInUser].coins,
+            inventory: users[loggedInUser].inventory
+        });
+    } else {
+        res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+    }
+});
+
+// API 2: 아이템 구매를 처리하는 기능
+app.post('/api/purchase', (req, res) => {
+    const loggedInUser = 'testuser'; // 'testuser'로 가정
+    const cart = req.body.cart; // 브라우저에서 보낸 장바구니 정보
+    const user = users[loggedInUser];
+
+    if (!user) return res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+
+    // 총 구매 가격 계산
+    const totalCost = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0) * 5;
+
+    // 코인이 부족한지 확인
+    if (user.coins < totalCost) {
+        return res.status(400).json({ success: false, message: '코인이 부족합니다.' });
+    }
+
+    // 코인 차감 및 인벤토리 추가
+    user.coins -= totalCost;
+    for (const itemName in cart) {
+        user.inventory[itemName] += cart[itemName];
+    }
+
+    // 변경된 정보를 파일에 저장
+    try {
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+        res.json({ 
+            success: true, 
+            message: '구매가 완료되었습니다!',
+            coins: user.coins,
+            inventory: user.inventory
+        });
+    } catch (err) {
+        console.error('구매 정보 저장 오류:', err);
+        res.status(500).json({ success: false, message: '구매 정보를 저장하는 중 오류가 발생했습니다.' });
+    }
+});
 
     // 서버 실행 (Promise.all 내부로 이동)
     app.listen(port, () => {
